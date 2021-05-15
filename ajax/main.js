@@ -33,9 +33,20 @@ function getMonthName(mo) {
 }
 
 try {
-  var myMonth = 15; // 15 は範囲外であり、例外が発生する
+  var myMonth = 10; // 15 は範囲外であり、例外が発生する
   var monthName = getMonthName(myMonth);
 } catch (e) {
   monthName = "unknown";
   console.error(e.message, e.name); // エラーハンドラーに例外オブジェクトを渡す
 }
+
+function promiseTest(input) {
+  return new Promise((resolve, reject) => {
+    // reslveの場合の処理
+    resolve(`${input}です`);
+    // rejectの場合
+    reject("NGです");
+  });
+}
+
+console.log(promiseTest("テスト太郎"));
