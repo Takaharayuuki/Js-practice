@@ -40,6 +40,7 @@ try {
   console.error(e.message, e.name); // エラーハンドラーに例外オブジェクトを渡す
 }
 
+// Promiseについて
 function promiseTest(input) {
   return new Promise((resolve, reject) => {
     // reslveの場合の処理
@@ -50,3 +51,29 @@ function promiseTest(input) {
 }
 
 console.log(promiseTest("テスト太郎"));
+
+function buyService(pay, second) {
+  return new Promise((ok, ng) => {
+    setTimeout(() => {
+      if (pay > 100) {
+        let change = pay - 100;
+        console.log(`${second}秒,お釣りは${pay}円です`);
+        ok(change);
+      }
+      ng("お金が足りません");
+    }, second * 1000);
+  });
+}
+console.log("1");
+console.log(buyService(300, 2));
+console.log("3");
+
+// buyService(180)
+//   .then((change1) => {
+//     console.log(change1);
+//     return buyService(change1);
+//   })
+//   .then((change2) => {
+//     console.log(change2);
+//   })
+//   .catch((e) => console.log(e));
