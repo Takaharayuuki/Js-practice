@@ -33,7 +33,6 @@ function getMonthName(mo) {
 }
 
 try {
-  // 試みる文
   var myMonth = 15; // 15 は範囲外であり、例外が発生する
   var monthName = getMonthName(myMonth);
 } catch (e) {
