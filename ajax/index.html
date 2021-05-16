@@ -8,12 +8,47 @@
 </head>
 <body>
 
-  <form method="GET" action="index.html">
-    <input type="text" name="name">
-    <input type="email" name="email">
-    <input type="text" name="hobby">
-    <button type="submit">送信</button>
+  <form id="post_form">
+    氏名<input type="text" name="name" value="氏名">
+    コメント<input type="email" name="email" value="コメント">
+    <button id="button" type="button">送信</button>
   </form>
-  <script src="main.js"></script>
+  <!-- <script src="main.js"></script> -->
+  <script>
+    const url = '';
+
+    const get_options = {
+      method: 'GET'
+    }
+
+    const getFormData =
+
+    const postForm = document.forms.post_form
+    console.log(postForm);
+    const formData = new FormData(postForm);
+    console.log(formData);
+
+    for(let fd of formData.entries()){
+      console.log(`${fd[0]} : ${fd[1]}`);
+    }
+
+    document.getElementById('button').addEventListener('click', () => {
+    const postForm = document.forms.post_form
+    const formData = new FormData(postForm);
+    const url = '';
+
+    const get_options = {
+      method: 'post',
+      body: formData
+    }
+
+    fetch(url,get_options).then(response => {
+      if(response.ok){
+      response.text()
+    } else {
+      return new Error();
+    }}).then(text => console.log(text)).catch(error => console.log(error.message))
+    })
+  </script>
 </body>
 </html>
