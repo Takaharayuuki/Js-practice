@@ -15,40 +15,30 @@
   </form>
   <!-- <script src="main.js"></script> -->
   <script>
-    const url = '';
+// グローバルコンテキスト
+//   let a = 0;
 
-    const get_options = {
-      method: 'GET'
-    }
+//  function b() {
+// //関数コンテキスト  関数の{}の中で使えるコンテキスト
+//   console.log(this, arguments , a);
+// }
 
-    const getFormData =
+// console.log(a);
+// b();
 
-    const postForm = document.forms.post_form
-    console.log(postForm);
-    const formData = new FormData(postForm);
-    console.log(formData);
+// コールスタックとは
+// javascriptエンジンがどのような経路でコンテキストを処理しているかの経路
+// sourcesのデバッグツールでコールスタックの中身が確認できる
+function a(){
 
-    for(let fd of formData.entries()){
-      console.log(`${fd[0]} : ${fd[1]}`);
-    }
-
-    document.getElementById('button').addEventListener('click', () => {
-    const postForm = document.forms.post_form
-    const formData = new FormData(postForm);
-    const url = '';
-
-    const get_options = {
-      method: 'post',
-      body: formData
-    }
-
-    fetch(url,get_options).then(response => {
-      if(response.ok){
-      response.text()
-    } else {
-      return new Error();
-    }}).then(text => console.log(text)).catch(error => console.log(error.message))
-    })
+}
+function b(){
+  a();
+}
+function c(){
+  b();
+}
+c();
   </script>
 </body>
 </html>
