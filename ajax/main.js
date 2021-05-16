@@ -12,13 +12,15 @@ console.log(fetchTest); // 値が入っていないうちにlogを表示して�
 
 // サーバーからのデータの取得を待ってから処理をする
 // Promise ,async/await
-function getDogImage(url, options) {
-  return fetch(url, options).then((response) => response.json());
+function fetchDogImage(url, options) {
+  return fetch(url, options)
+    .then((response) => response.json())
+    .catch((e) => console.log(e.message));
 }
 
-async function getImage(url, options) {
-  // getDogImageの処理が完了してresponseの中身が入ってからconsole.logをすることで値がundefinedにならない
-  const response = await getDogImage(url, options);
+async function fetchImage(url, options) {
+  // fetchDogImageの処理が完了してresponseの中身が入ってからconsole.logをすることで値がundefinedにならない
+  const response = await fetchDogImage(url, options);
   console.log(response.message);
 
   const imageElement = document.createElement("img");
@@ -26,4 +28,4 @@ async function getImage(url, options) {
   document.body.appendChild(imageElement);
 }
 
-getImage(url, options);
+fetchImage(url, options);
